@@ -1,0 +1,19 @@
+{%extends "base.html" %}
+{% block title %} Index Page {% endblock %}
+{% block content%}
+<a href="{{url_for('home')}}">Goto base</a>
+
+<h1>This is a trial on running getting a data from google map API</h1>
+<form action="/index" method="POST">
+    <button type="submit">Process API request</button>
+</form>
+
+{% if result %}
+        <h2>Result:
+            {% for my_item in result %} 
+            <br>{{my_item}}
+            {%endfor%}
+        </h2>
+{% endif %}
+
+{%endblock%}
