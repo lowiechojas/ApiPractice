@@ -3,24 +3,42 @@
 {% block content%}
 <a href="{{url_for('home')}}">Goto base</a>
 
-<h1>This is a trial on running getting a data from google map API</h1>
-<form action="/index" method="POST">
-    <label for="forigin">Origin</label>
-    <input type="text" name="forigin" id="forigin" required><br>
-    <label for="fdestination">Destination</label>
-    <input type="text" name="fdestination" id="fdestination" required><br>
-    <label for="fmode">Travel Mode</label>
-    <input type="text" name="fmode" id="fmode" required>
-
-    <button type="submit">Process API request</button>
-</form>
-
-{% if result %}
-        <h2>Result:
-            {% for my_item in result %} 
-            <br>{{my_item}}
-            {%endfor%}
-        </h2>
-{% endif %}
+<h1>Google Route API</h1>
+<div class="container">
+    <form action="/index" method="POST">
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label col-form-label-sm" for="forigin">Origin</label>
+            <div class="col-sm-3">
+                <input class="form-control form-control-sm" type="text" name="forigin" id="forigin" required>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label col-form-label-sm" for="fdestination">Destination</label>
+            <div class="col-sm-3">
+                <input class="form-control form-control-sm" type="text" name="fdestination" id="fdestination" required>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label col-form-label-sm" for="fmode">Travel Mode</label>
+            <div class="col-sm-3">
+                <input class="form-control form-control-sm" type="text" name="fmode" id="fmode" required>
+            </div>
+        </div>
+        <div class="d-grid mx-auto">
+            <button class="btn btn-primary" type="submit">Process API request</button>
+        </div>
+    </form>
+</div>
+<div class="container">
+    {% if result %}
+            <h2 class="lead">Result:
+                <ol>
+                {% for my_item in result %}
+                    <li>{{my_item}}</li>
+                    {%endfor%}
+                </ol>
+            </h2>
+    {% endif %}
+</div>
 
 {%endblock%}
