@@ -1,4 +1,5 @@
 import requests
+from bs4 import BeautifulSoup
 
 # AIzaSyAt1RtlPmF_HH5sOZOFVYV_E62N-M9qJlg
 apikey = 'AIzaSyAt1RtlPmF_HH5sOZOFVYV_E62N-M9qJlg'
@@ -20,11 +21,15 @@ _route = requests.get(path, params={
 def GoogleRouteApi():
     # directions = _route.json()
     # print the route
+    _chtml = ""
     r = []
     if _route['geocoded_waypoints'][0]['geocoder_status'][0:] == 'OK':
         for step in _route['routes'][0]['legs'][0]['steps']:
-            r.append(step['html_instructions'])
+            _chtml = BeautifulSoup(
+                step['html_instructions'], 'html.parser').get_text()
+            r.append(_chtml)
             # print(r)
+        print(r)
         return r
 
     else:

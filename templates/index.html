@@ -1,9 +1,11 @@
 {%extends "base.html" %}
 {% block title %} Index Page {% endblock %}
 {% block content%}
-<a href="{{url_for('home')}}">Goto base</a>
 
-<h1>Google Route API</h1>
+<div class="container text-center fw-bold">
+    <a href="{{url_for('home')}}">Goto base</a>
+    <h1 class="display-3">Google Route API</h1>
+</div>
 <div class="container">
     <form action="/index" method="POST">
         <div class="row mb-3">
@@ -30,8 +32,9 @@
     </form>
 </div>
 <div class="container">
+    <h2 class="lead"><h1 class="display-6">Follow this route:</h1>
     {% if result %}
-            <h2 class="lead">Result:
+            
                 <ol>
                 {% for my_item in result %}
                     <li>{{my_item}}</li>
@@ -39,6 +42,11 @@
                 </ol>
             </h2>
     {% endif %}
+</div>
+<div class="container">
+    <div class="container">
+        <iframe style="height:calc(100vh*.5);width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Philippines&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
+    </div>
 </div>
 
 {%endblock%}
