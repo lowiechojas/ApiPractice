@@ -1,5 +1,6 @@
 {%extends "base.html" %}
 {% block title %} Index Page {% endblock %}
+
 {% block content%}
 
 <div class="container text-center fw-bold">
@@ -7,7 +8,7 @@
     <h1 class="display-3">Google Route API</h1>
 </div>
 <div class="container">
-    <form action="/index" method="POST">
+    <form onsubmit="return false" action="/index" method="POST">
         <div class="row mb-3">
             <label class="col-sm-2 col-form-label col-form-label-sm" for="forigin">Origin</label>
             <div class="col-sm-3">
@@ -38,23 +39,16 @@
                 <ol>
                 {% for my_item in result %}
                     <li>{{my_item}}</li>
-                    {%endfor%}
-                </ol>
-            </h2>
+                {%endfor%}
+                </ol>      
     {% endif %}
+    </h2>
 </div>
 <div class="container">
-    <div class="container">
-        <iframe style="height:calc(100vh*.5);width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Philippines&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
-    </div>
-    <div id="map" style="height: 500px;"></div>
-
-        <script async
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt1RtlPmF_HH5sOZOFVYV_E62N-M9qJlg&callback=initMap">
-        </script>
-    </div>
-
+    <div id="map" data-polyline="{{ polyline }}" style="height: 500px; width: 100%;"></div>
 </div>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt1RtlPmF_HH5sOZOFVYV_E62N-M9qJlg&callback=initMap"></script>
+<script src="https://unpkg.com/@mapbox/polyline"></script>
 <script src="{{url_for('static',filename='js/app.js')}}"></script>
 {%endblock%}

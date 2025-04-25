@@ -1,0 +1,4 @@
+/project-directory
+├── /static    # CSS, JS, Images
+├── /templates # HTML templates
+└── app.py     # Your Flask app

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from api import GoogleRouteApi
+from api import GoogleRouteApi, RoutePolyline
 
 
 app = Flask(__name__)
@@ -12,12 +12,14 @@ def home():
 
 @app.route("/index", methods=["GET", "POST"])
 def index():
-    r = None
-    if request.method == "POST":
+    _route = None
+    _polyline = None
+    if request.method == "GET":
         # r = GoogleRouteApi(origin, destination, travel_mode)
-        r = GoogleRouteApi()
-        print(r)
-    return render_template("index.html", result=r)
+        _route = GoogleRouteApi()
+        _polyline = RoutePolyline()
+        # print(_polyline)
+    return render_template("index.html", result=_route, polyline=_polyline)
 
 
 if __name__ == "__main__":

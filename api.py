@@ -28,16 +28,20 @@ def GoogleRouteApi():
             _chtml = BeautifulSoup(
                 step['html_instructions'], 'html.parser').get_text()
             r.append(_chtml)
-            # print(r)
         return r
 
     else:
         print("Route not found")
-# RouteFile.write(str(_route))
-# RouteFile.close()
-# print the route
 
 
-if __name__ == "__main__":
-    # This code only runs if you execute api.py directly
-    test = GoogleRouteApi()
+def RoutePolyline():
+
+    points = _route['routes'][0]['overview_polyline']['points']
+    return points
+
+    # if __name__ == "__main__":
+    # print the route
+    # print(GoogleRouteApi())
+    # print the polyline
+    # print(RoutePolyline())
+    # RouteFile.close()
