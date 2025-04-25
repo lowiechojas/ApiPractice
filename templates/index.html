@@ -4,7 +4,6 @@
 {% block content%}
 
 <div class="container text-center fw-bold">
-    <a href="{{url_for('home')}}">Goto base</a>
     <h1 class="display-3">Google Route API</h1>
 </div>
 <div class="container">
@@ -22,9 +21,18 @@
             </div>
         </div>
         <div class="row mb-3">
-            <label class="col-sm-2 col-form-label col-form-label-sm" for="fmode">Travel Mode</label>
+            <label class="col-sm-2 col-form-label col-form-label-sm" for="fmode">
+                Travel Mode
+            </label>
             <div class="col-sm-3">
-                <input class="form-control form-control-sm" type="text" name="fmode" id="fmode" required>
+             <!--   <input class="form-control form-control-sm" type="text" name="fmode" id="fmode" required>   -->   
+                <select class="form-select" name="travelmode" id="travelmode">
+                    <option value="1">Drive</option>
+                    <option value="2">Walk</option>
+                    <option value="3">Bicycle</option>
+                    <option value="4">Two-Wheeler (two-wheeled motorized vehicle)</option>
+                    <option value="5">Transit</option>
+                </select>
             </div>
         </div>
         <div class="d-grid mx-auto">

@@ -20,7 +20,7 @@ function initAutocomplete() {
   }
 */  
   
-function initMap() {
+window.initMap = function (callback) {
 
   const encodedPath = document.getElementById("map").dataset.polyline;
     // Create the map
@@ -50,14 +50,19 @@ function initMap() {
         strokeWeight: 4,
     });
 
-     window.alert('Map loaded successfully!');
+    google.maps.event.addListenerOnce(map, 'idle', function() {
+      callback();  // Call the callback function passed as an argument
+    });
+
+    
 }
 
 
 document.addEventListener('submit',() => {
    // Prevent the default form submission
   //e.preventDefault();
-  initMap();
-  
+  initMap(() => {
+    
+});
 });
 
