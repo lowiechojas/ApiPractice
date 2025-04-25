@@ -22,4 +22,10 @@ function initAutocomplete() {
     if (window.google && window.google.maps) {
       initAutocomplete();
     }
+
   });
+
+  document.addEventListener("submit",() => {
+    window.alert('Form Submitted!');
+  });
+

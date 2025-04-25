@@ -29,7 +29,6 @@ def GoogleRouteApi():
                 step['html_instructions'], 'html.parser').get_text()
             r.append(_chtml)
             # print(r)
-        print(r)
         return r
 
     else:
