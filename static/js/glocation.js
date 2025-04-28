@@ -28,3 +28,10 @@ function onPlaceChanged() {
   // place.geometry.location for the location coordinates
   // place.formatted_address for the address
 }
+
+
+document.addEventListener('DOMContentLoaded', (e) => {
+   
+    initAutocomplete();
+    window.alert("Autocomplete initialized!");
+  });

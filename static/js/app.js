@@ -23,15 +23,14 @@ function initAutocomplete() {
 window.initMap = function (callback) {
 
   const encodedPath = document.getElementById("map").dataset.polyline;
-    // Create the map
-    const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 13,
-        center: { lat: 0, lng: 0 }, // Temporary center
-    });
+
 
     // Polyline passed from Flask
-    
-  
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 13,
+      center: { lat: 14.59491597417188, lng: 121.00677584033835}, // Temporary center
+  });
+ 
   
     // Decode the polyline (use mapbox/polyline)
     const decodedPath = polyline.decode(encodedPath).map(([lat, lng]) => ({ lat, lng }));
@@ -52,6 +51,7 @@ window.initMap = function (callback) {
 
     google.maps.event.addListenerOnce(map, 'idle', function() {
       callback();  // Call the callback function passed as an argument
+      
     });
 
     
@@ -62,7 +62,18 @@ document.addEventListener('submit',() => {
    // Prevent the default form submission
   //e.preventDefault();
   initMap(() => {
-    
 });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize the map when the page loads
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 13,
+      center: { lat: 14.59491597417188, lng: 121.00677584033835}, // Temporary center
+  });
+
+});
+
+/*
+14.59491597417188, 121.00677584033835
+*/

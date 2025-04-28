@@ -1,19 +1,24 @@
-{%extends "base.html" %}
-{% block title %} Index Page {% endblock %}
+    {%extends "base.html" %}
+    {% block title %} Google Route API {% endblock %}
+    {% block head %} 
+    {{ super() }}
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='maps.png') }}">
+    {% endblock %}
 
-{% block content%}
+    {% block content%}
 
-<div class="container text-center fw-bold">
-    <h1 class="display-3">Google Route API</h1>
-</div>
+    <div  class="container text-center fw-bold">
+        <h1 class="display-3">Google Route API</h1>
+    </div>
 <div class="container">
-    <form onsubmit="return false" action="/index" method="POST">
-        <div class="row mb-3">
-            <label class="col-sm-2 col-form-label col-form-label-sm" for="forigin">Origin</label>
-            <div class="col-sm-3">
-                <input class="form-control form-control-sm" type="text" name="forigin" id="location-input" placeholder="Enter location..." required>
-            </div>
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label col-form-label-sm" for="forigin">Origin</label>
+        <div class="col-sm-3">
+            <input class="form-control form-control-sm" type="text" name="forigin" id="location-input" placeholder="Enter location..." required>
         </div>
+    </div>
+    <form onsubmit="return false" action="/index" method="POST">
+        
         <div class="row mb-3">
             <label class="col-sm-2 col-form-label col-form-label-sm" for="fdestination">Destination</label>
             <div class="col-sm-3">
@@ -56,8 +61,5 @@
     <div id="map" data-polyline="{{ polyline }}" style="height: 500px; width: 100%;"></div>
 </div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt1RtlPmF_HH5sOZOFVYV_E62N-M9qJlg&callback=initMap" async defer></script>
-<script src="https://unpkg.com/@mapbox/polyline"></script>
-<script src="{{url_for('static',filename='js/app.js')}}"></script>
-<script src="{{url_for('static',filename='js/glocation.js')}}"></script>
+
 {%endblock%}
